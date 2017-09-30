@@ -9,9 +9,9 @@ Temperature logger for RPi.
 dtoverlay=w1-gpio
 ```
 
-2. And something like this to /var/spool/cron/crontab:
+2. And something like this to crontab (crontab -e):
 
 ```
 # Log palju temperatures once a minute
-*/1 * * * * /usr/bin/python /home/pi/palju/palju.py
+*/1 * * * * /usr/bin/python /home/pi/paljumittari/palju.py
 ```
