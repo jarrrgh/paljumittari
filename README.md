@@ -19,8 +19,14 @@ dtoverlay=w1-gpio
 
 ```
 # Log palju temperatures once a minute
-*/1 * * * * /usr/bin/python /home/pi/paljumittari/palju.py
+*/1 * * * * /usr/bin/python /home/pi/paljumittari/palju.py 2>&1 | /usr/bin/logger -t palju
 ```
+
+Crontab logs for palju can be checked with
+```
+less -p \&palju /var/log/syslog
+```
+Shift-f will tail the output.
 
 ## Optional and notes-to-self
 1. Disable starting desktop after boot. Desktop can be launched again with 'startx'.
