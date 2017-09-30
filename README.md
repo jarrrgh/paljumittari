@@ -21,3 +21,26 @@ dtoverlay=w1-gpio
 # Log palju temperatures once a minute
 */1 * * * * /usr/bin/python /home/pi/paljumittari/palju.py
 ```
+
+## Optional and notes-to-self
+1. Disable starting desktop after boot. Desktop can be launched again with 'startx'.
+
+```
+sudo raspi-config
+```
+
+Boot Options > Desktop / CLI > Console Autologin
+
+2. Connect to wifi automatically
+
+```
+sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
+```
+
+```
+network={
+    ssid="ssid"
+    psk="password"
+}
+```
+
