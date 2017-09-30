@@ -2,14 +2,20 @@
 Temperature logger for RPi.
 
 ## Usage
-1. Add this to /boot/config.txt:
+1. Install requirements:
+
+```
+pip install -r requirements.pip
+```
+
+2. Add this to /boot/config.txt:
 
 ```
 # Enable General Purpose I/O
 dtoverlay=w1-gpio
 ```
 
-2. And something like this to crontab (crontab -e):
+3. And something like this to crontab (crontab -e):
 
 ```
 # Log palju temperatures once a minute
