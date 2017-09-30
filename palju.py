@@ -8,6 +8,15 @@ import config
 
 from w1thermsensor import W1ThermSensor
 
+def log(sensor_id, temp):
+    payload = { 'id': sensor_id, 'temp': temp }
+
+    req = urllib2.Request(config.ENDPOINT)
+    req.add_header('Content-Type', 'application/json')
+    req.add_header('x-token', config.X_TOKEN)
+
+    response = urllib2.urlopen(req, json.dumps(payload))
+
 temps = dict()
 
 for sensor in W1ThermSensor.get_available_sensors():
@@ -18,11 +27,3 @@ for sensor in W1ThermSensor.get_available_sensors():
     except requests.ConnectionError:
         print("No connection. Could not log temperature.")
 
-def log(sensor_id, temp):
-    payload = { 'id': sensor_id, 'temp': temp }
-
-    req = urllib2.Request(config.ENDPOINT)
-    req.add_header('Content-Type', 'application/json')
-    req.add_header('x-token', config.X_TOKEN)
-
-    response = urllib2.urlopen(req, json.dumps(payload))
