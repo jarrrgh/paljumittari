@@ -8,12 +8,13 @@ import config
 
 from w1thermsensor import W1ThermSensor
 
-def log(sensor_id, temp):
-    payload = { 'id': sensor_id, 'temp': temp }
+LOG_URL = config.ENDPOINT + '/sensor/{}/measurement?apikey={}'
 
-    req = urllib2.Request(config.ENDPOINT)
+def log(sensor_id, temp):
+    payload = { 'value': temp }
+
+    req = urllib2.Request(LOG_URL.format(sensor_id, config.APIKEY))
     req.add_header('Content-Type', 'application/json')
-    req.add_header('x-token', config.X_TOKEN)
 
     response = urllib2.urlopen(req, json.dumps(payload))
 
