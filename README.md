@@ -24,7 +24,7 @@ dtoverlay=w1-gpio
 
 Crontab logs for palju can be checked with
 ```
-less -p \&palju /var/log/syslog
+less -p \&palju +F /var/log/syslog
 ```
 Shift-f will tail the output.
 
